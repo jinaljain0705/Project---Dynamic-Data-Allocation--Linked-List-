@@ -1,8 +1,8 @@
 /*
     Project Definition: Dynamic Memory Allocation
 
-    Develop a simple crud Opertaion in linked list with the help of C++ that will help you to
-    understand system and memory tp provide dynamically.
+    Develop a simple CRUD Operation in a linked list with the help of C++ that will help you to
+    Understand the system and memory to provide dynamic support.
 
     Project Criteria:
     Requirements:
