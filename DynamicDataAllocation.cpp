@@ -38,7 +38,7 @@ public:
 
     Node(int value) {
         data = value;
-        next = nullptr;
+        next = NULL;
     }
 };
 
@@ -48,7 +48,7 @@ private:
 
 public:
     DynamicMemoryAllocation() {
-        head = nullptr;
+        head = NULL;
     }
 
     void insert_at_beginning(int data) {
@@ -61,7 +61,7 @@ public:
     void Search(int key) {
         Node* temp = head;
         int pos = 1;
-        while (temp != nullptr) {
+        while (temp != NULL) {
             if (temp->data == key) {
                 cout << "Found " << key << " at position " << pos << endl;
                 return;
@@ -74,19 +74,19 @@ public:
 
     void Delete_node(int key) {
         Node* temp = head;
-        Node* prev = nullptr;
+        Node* prev = NULL;
 
-        while (temp != nullptr && temp->data != key) {
+        while (temp != NULL && temp->data != key) {
             prev = temp;
             temp = temp->next;
         }
 
-        if (temp == nullptr) {
+        if (temp == NULL) {
             cout << key << " not found, nothing to delete." << endl;
             return;
         }
 
-        if (prev == nullptr) {
+        if (prev == NULL) {
             head = head->next;
         } else {
             prev->next = temp->next;
@@ -97,11 +97,11 @@ public:
     }
 
     void reverse() {
-        Node* prev = nullptr;
+        Node* prev = NULL;
         Node* current = head;
-        Node* next = nullptr;
+        Node* next = NULL;
 
-        while (current != nullptr) {
+        while (current != NULL) {
             next = current->next;
             current->next = prev;
             prev = current;
@@ -115,7 +115,7 @@ public:
     void display() {
         Node* temp = head;
         cout << "Linked List: ";
-        while (temp != nullptr) {
+        while (temp != NULL) {
             cout << temp->data << " -> ";
             temp = temp->next;
         }
