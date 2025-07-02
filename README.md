@@ -148,3 +148,7 @@ int main() {
 
 Output:
 ![Dynamic Memory Allocation]()
+![Dynamic Memory Allocation]()
+![Dynamic Memory Allocation]()
+![Dynamic Memory Allocation]()
+![Dynamic Memory Allocation]()
