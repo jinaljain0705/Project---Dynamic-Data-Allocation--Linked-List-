@@ -134,36 +134,36 @@ int main() {
         cout << "3. Delete" << endl;
         cout << "4. Reverse" << endl;
         cout << "5. Display" << endl;
-        cout << "0. Exit" << endl;
+        cout << "0<<Exit" << endl;
         cout << "Enter choice: " << endl;
         cin >> choice;
 
         switch (choice) {
-        case 1:
+        Case1:
             cout << "Enter value to insert: ";
             cin >> value;
             obj.insert_at_beginning(value);
             break;
-        case 2:
+        Case2:
             cout << "Enter value to search: ";
             cin >> value;
             obj.Search(value);
             break;
-        case 3:
+        Case3:
             cout << "Enter value to delete: ";
             cin >> value;
             obj.Delete_node(value);
             break;
-        case 4:
+        Case4:
             obj.reverse();
             break;
-        case 5:
+        Case5:
             obj.display();
             break;
-        case 0:
+        Case0:
             cout << "Exiting..." << endl;
             break;
-        default:
+        Default:
             cout << "Invalid choice!" << endl;
         }
 
