@@ -41,75 +41,18 @@ public:
         next = NULL;
     }
 };
-
-class DynamicMemoryAllocation {
-private:
+class LinkedList {
+public:
     Node* head;
 
-public:
-    DynamicMemoryAllocation() {
+    LinkedList() {
         head = NULL;
     }
 
-    void insert_at_beginning(int data) {
-        Node* new_node = new Node(data);
-        new_node->next = head;
-        head = new_node;
-        cout << "Inserted: " << data << endl;
-    }
-
-    void Search(int key) {
-        Node* temp = head;
-        int pos = 1;
-        while (temp != NULL) {
-            if (temp->data == key) {
-                cout << "Found " << key << " at position " << pos << endl;
-                return;
-            }
-            temp = temp->next;
-            pos++;
-        }
-        cout << key << " not found in the list." << endl;
-    }
-
-    void Delete_node(int key) {
-        Node* temp = head;
-        Node* prev = NULL;
-
-        while (temp != NULL && temp->data != key) {
-            prev = temp;
-            temp = temp->next;
-        }
-
-        if (temp == NULL) {
-            cout << key << " not found, nothing to delete." << endl;
-            return;
-        }
-
-        if (prev == NULL) {
-            head = head->next;
-        } else {
-            prev->next = temp->next;
-        }
-
-        delete temp;
-        cout << "Deleted: " << key << endl;
-    }
-
-    void reverse() {
-        Node* prev = NULL;
-        Node* current = head;
-        Node* next = NULL;
-
-        while (current != NULL) {
-            next = current->next;
-            current->next = prev;
-            prev = current;
-            current = next;
-        }
-
-        head = prev;
-        cout << "List reversed." << endl;
+    void insert_at_beginning(int value) {
+        Node* newNode = new Node(value);
+        newNode->next = head;
+        head = newNode;
     }
 
     void display() {
@@ -121,53 +64,109 @@ public:
         }
         cout << "NULL" << endl;
     }
+
+    void search(int key) {
+        Node* temp = head;
+        int pos = 1;
+        while (temp != NULL) {
+            if (temp->data == key) {
+                cout << "Value " << key << " found at position " << pos << endl;
+                return;
+            }
+            temp = temp->next;
+            pos++;
+        }
+        cout << "Value " << key << " not found in the list." << endl;
+    }
+
+    void delete_node(int key) {
+        Node* temp = head;
+        Node* prev = NULL;
+
+        if (temp != NULL && temp->data == key) {
+            head = temp->next;
+            delete temp;
+            cout << "Node with value " << key << " deleted." << endl;
+            return;
+        }
+
+        while (temp != NULL && temp->data != key) {
+            prev = temp;
+            temp = temp->next;
+        }
+
+        if (temp == NULL) {
+            cout << "Value " << key << " not found." << endl;
+            return;
+        }
+
+        prev->next = temp->next;
+        delete temp;
+        cout << "Node with value " << key << " deleted." << endl;
+    }
+
+    void reverse() {
+        Node* prev = NULL;
+        Node* current = head;
+        Node* nextNode = NULL;
+
+        while (current != NULL) {
+            nextNode = current->next;
+            current->next = prev;
+            prev = current;
+            current = nextNode;
+        }
+
+        head = prev;
+        cout << "Linked list reversed successfully." << endl;
+    }
 };
 
 int main() {
-    DynamicMemoryAllocation obj;
+    LinkedList list;
     int choice, value;
 
     do {
-        cout << "------ DYNAMIC CRUD MENU ------" << endl; 
-        cout << "1. Insert" << endl;
-        cout << "2. Search" << endl;
-        cout << "3. Delete" << endl;
-        cout << "4. Reverse" << endl;
-        cout << "5. Display" << endl;
-        cout << "0. Exit" << endl;
-        cout << "Enter choice: " << endl;
+        cout << "\n------ Linked List Menu ------" << endl;
+        cout << "1. Insert at Beginning" << endl;
+        cout << "2. Display" << endl;
+        cout << "3. Search" << endl;
+        cout << "4. Delete" << endl;
+        cout << "5. Reverse" << endl;
+        cout << "6. Exit" << endl;
+        cout << "Enter your choice: " << endl;
         cin >> choice;
 
         switch (choice) {
-        Case1:
-            cout << "Enter value to insert: ";
-            cin >> value;
-            obj.insert_at_beginning(value);
-            break;
-        Case2:
-            cout << "Enter value to search: ";
-            cin >> value;
-            obj.Search(value);
-            break;
-        Case3:
-            cout << "Enter value to delete: ";
-            cin >> value;
-            obj.Delete_node(value);
-            break;
-        Case4:
-            obj.reverse();
-            break;
-        Case5:
-            obj.display();
-            break;
-        Case0:
-            cout << "Exiting..." << endl;
-            break;
-        Default:
-            cout << "Invalid choice!" << endl;
+            case 1:
+                cout << "Enter value to insert: " << endl;
+                cin >> value;
+                list.insert_at_beginning(value);
+                break;
+            case 2:
+                list.display();
+                break;
+            case 3:
+                cout << "Enter value to search: " << endl;
+                cin >> value;
+                list.search(value);
+                break;
+            case 4:
+                cout << "Enter value to delete: " << endl;
+                cin >> value;
+                list.delete_node(value);
+                break;
+            case 5:
+                list.reverse();
+                break;
+            case 6:
+                cout << "Exiting program..." << endl;
+                break;
+            default:
+                cout << "Invalid choice. Try again." << endl;
         }
 
-    } while (choice != 0);
+    } while (choice != 6);
 
     return 0;
 }
