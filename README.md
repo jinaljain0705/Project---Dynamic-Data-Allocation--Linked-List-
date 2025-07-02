@@ -108,7 +108,7 @@ int main() {
         cout << "3. Delete" << endl;
         cout << "4. Reverse" << endl;
         cout << "5. Display" << endl;
-        cout << "0<<Exit" << endl;
+        cout << "0. Exit" << endl;
         cout << "Enter choice: " << endl;
         cin >> choice;
 
